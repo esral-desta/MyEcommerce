@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+<head>
+
+</head>
+{% block content %}
+    <div class="container mt-5" style="max-width: 450px;"  >
+        <div class="card p-3 shadow rounded ">
+            <img src={% static 'customer/images.png' %} class="rounded mx-auto d-block p-1 pb-2" alt="..." style="width: 90px;">
+               <form method="post" novalidate>
+                {% csrf_token %}
+                {% for field in form.visible_fields %}
+                    <div class="form-floating mb-3">
+
+                        {{ field }}
+                        {% if  field.errors%}
+                            {% for error in field.errors %}
+                                <label class="text-danger" for="{{ field.id_for_label }}">{{error}} {{ field.label }} {% if field.field.required %}*{% endif %}</label>
+                            {% endfor %}
+                        {% else %}
+                            <label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %}*{% endif %}</label>
+                        {% endif %}
+                    
+                        {% comment %} <div class="valid-feedback">Looks good!</div> {% endcomment %}
+                    </div>
+                {% endfor %}
+                    {% comment %} {{form}} {% endcomment %}
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-primary me-md-2" type="submit">Submit</button>
+                  </div>
+                <form>
+        </div>
+    </div>
+{% endblock content %}</form>
+</form>
+
+
+
+
+                {% comment %} {% for field in form.visible_fields %}
+                    <div class="form-floating mb-3">
+                        {{ field }}
+                        <label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %}*{% endif %}</label>
+                    </div>
+                {% endfor %} {% endcomment %}
+
+
+
+
+
+
+
+            {% comment %} <div id="msg">
+                {% if form.errors %}
+                <div class="error">
+                 <p><span>ERROR</span></p>
+                 <ul>
+                    {% for key, value in form.errors.items %}
+                    {{ key }}
+                  {% for error in value %}
+                   <li>{{ error }}</li>
+                  {% endfor %}
+                 {% endfor %}
+                 </ul>
+                </div>
+                {% endif %}
+               </div> {% endcomment %}

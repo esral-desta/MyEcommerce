@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <p>Are u sure u wanna delete Customer {{ customer.firstName }}</p>
+        <a class="btn btn-primary mb-3" type="button" href="{% url 'customer:detail' customer.pk %}">No</a>      
+        <button class="btn btn-danger mb-3" type="submit" >Yes</button>      
+    </form>
+{% endblock content %}

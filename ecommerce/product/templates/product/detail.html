@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-md mt-5">
+  <div class="row">
+    <div class="col-lg-8">
+        <div class="card mx-auto">
+            <div class="row">
+              <div class="col">
+                <img
+                  src="{% static 'product/images.png' %}"
+                  class="rounded img-fluid mx-auto d-block"
+                  alt="..."
+                />
+              </div>
+              <div class="col">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    lead-in to additional content. This content is a little bit
+                    lead-in to additional content. This content is a little bit
+                    lead-in to additional content. This content is a little bit
+                    lead-in to additional content. This content is a little bit
+                    longer.
+                  </p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                  {% if "/product/detail" in request.path  %}
+                  <a class="btn btn-primary mb-3" type="button" href="{% url 'product:delete' product.pk %}">Delete</a>      
+                  {% endif %}
+                  <a class="btn btn-primary mb-3" type="button" href="{% url 'product:update' product.pk %}">Update Product</a>      
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="col">
+        <h1>Other users</h1>
+        <ol class="list-group list-group-numbered">
+            <li class="list-group-item">A list item</li>
+            <li class="list-group-item">A list item</li>
+            <li class="list-group-item">A list item</li>
+            <li class="list-group-item">A list item</li>
+            <li class="list-group-item">A list item</li>
+            <li class="list-group-item">A list item</li>
+            <li class="list-group-item">A list item</li>
+            <li class="list-group-item">A list item</li>
+          </ol>
+    </div>
+  </div>
+</div>
+{% endblock content %}
